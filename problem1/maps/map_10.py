@@ -98,3 +98,5 @@ class Map():
     
     
     road_lengths = None
+    
+    heur = None
