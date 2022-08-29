@@ -64,3 +64,112 @@ True
 >>> a_star = AStar(graph)
 >>> a_star.shortest_path(0, 0) == expected_ans
 True
+
+
+
+
+#Test Romania map from lectures, Arad->Arad
+>>> from maps.Graph_romania import Graph_romania
+>>> from algo.AStar import AStar
+>>> from algo.Dijkstra import Dijkstra
+>>> from algo.Dfs import Dfs
+>>> graph = Graph_romania()
+>>> dfs = Dfs(graph)
+>>> dijk = Dijkstra(graph)
+>>> a_star = AStar(graph)
+>>> expected_ans = {'length': 0.0, 'path': [0]}
+>>> dfs.shortest_path(0, 0) == expected_ans
+True
+>>> dijk = Dijkstra(graph)
+>>> dijk.shortest_path(0, 0) == expected_ans
+True
+>>> a_star = AStar(graph)
+>>> a_star.shortest_path(0, 0) == expected_ans
+True
+
+
+
+
+#Test Romania map from lectures, Arad->Bucharest
+>>> from maps.Graph_romania import Graph_romania
+>>> from algo.AStar import AStar
+>>> from algo.Dijkstra import Dijkstra
+>>> from algo.Dfs import Dfs
+>>> graph = Graph_romania()
+>>> dfs = Dfs(graph)
+>>> dijk = Dijkstra(graph)
+>>> a_star = AStar(graph)
+>>> expected_ans = {'length': 418.0, 'path': [0, 7, 8, 11, 12]}
+>>> dfs.shortest_path(0, 12) == expected_ans
+True
+>>> dijk = Dijkstra(graph)
+>>> dijk.shortest_path(0, 12) == expected_ans
+True
+>>> a_star = AStar(graph)
+>>> a_star.shortest_path(0, 12) == expected_ans
+True
+
+
+
+
+
+#Test Simple map
+>>> from maps.Graph_simple import Graph_simple
+>>> from algo.AStar import AStar
+>>> from algo.Dijkstra import Dijkstra
+>>> from algo.Dfs import Dfs
+>>> graph = Graph_simple()
+>>> dfs = Dfs(graph)
+>>> dijk = Dijkstra(graph)
+>>> a_star = AStar(graph)
+>>> expected_ans = {'length': 0.0, 'path': [0]}
+>>> dfs.shortest_path(0, 0) == expected_ans
+True
+>>> dijk = Dijkstra(graph)
+>>> dijk.shortest_path(0, 0) == expected_ans
+True
+>>> a_star = AStar(graph)
+>>> a_star.shortest_path(0, 0) == expected_ans
+True
+>>> expected_ans = {'length': 15.0, 'path': [0, 1]}
+>>> dfs.shortest_path(0, 1) == expected_ans
+True
+>>> dijk = Dijkstra(graph)
+>>> dijk.shortest_path(0, 1) == expected_ans
+True
+>>> a_star = AStar(graph)
+>>> a_star.shortest_path(0, 1) == expected_ans
+True
+>>> expected_ans = None
+>>> dfs.shortest_path(0, 2) == expected_ans
+True
+>>> dijk = Dijkstra(graph)
+>>> dijk.shortest_path(0, 2) == expected_ans
+True
+>>> a_star = AStar(graph)
+>>> a_star.shortest_path(0, 2) == expected_ans
+True
+>>> expected_ans = {'length': 45.0, 'path': [0, 1, 4, 3]}
+>>> dfs.shortest_path(0, 3) == expected_ans
+True
+>>> dijk = Dijkstra(graph)
+>>> dijk.shortest_path(0, 3) == expected_ans
+True
+>>> a_star = AStar(graph)
+>>> a_star.shortest_path(0, 3) == expected_ans
+True
+>>> expected_ans = {'length': 25.0, 'path': [0, 1, 4]}
+>>> dfs.shortest_path(0, 4) == expected_ans
+True
+>>> dijk = Dijkstra(graph)
+>>> dijk.shortest_path(0, 4) == expected_ans
+True
+>>> a_star = AStar(graph)
+>>> a_star.shortest_path(0, 4) == expected_ans
+True
+
+
+
+
+
+
