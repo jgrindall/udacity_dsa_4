@@ -1,21 +1,25 @@
-from maps.map_romania import Map as map_romania
-from maps.map_10 import Map as map_10
-from maps.map_40 import Map as map_40
-from AStar import AStar
-from Dijkstra import Dijkstra
+from maps.Graph_romania import Graph_romania
+from maps.Graph_10 import Graph_10
+from maps.Graph_40 import Graph_40
 
+from algo.AStar import AStar
+from algo.Dijkstra import Dijkstra
+from algo.Dfs import Dfs
 
-def p(map, start, goal):
-    a = AStar(map.cities, map.roads, map.road_lengths, map.heur)
+def p(graph, start, goal):
+    dfs = Dfs(graph)
+    print(dfs.shortest_path(start, goal))
     
-    print(a.shortest_path(start, goal))
+    dijk = Dijkstra(graph)
+    print(dijk.shortest_path(start, goal))
     
-    d = Dijkstra(map.cities, map.roads, map.road_lengths)
+    a_star = AStar(graph)
+    print(a_star.shortest_path(start, goal))
     
-    print(d.shortest_path(start, goal))
-    
-    
-p(map_romania, 0, 12)
-p(map_10, 0, 4)
-p(map_40, 5, 34)
-p(map_40, 8, 24)
+
+graph_romania = Graph_romania()
+
+p(graph_romania, 0, 12)
+p(Graph_10(), 0, 4)
+p(Graph_40(), 5, 34)
+p(Graph_40(), 8, 24)

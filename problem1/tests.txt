@@ -1,25 +1,66 @@
-# Test basic
->>> from problem_1 import AStar
->>> a = AStar({0: [0, 0]}, [[]])
->>> a.heur[0][0]
-0.0
+#Test tiny
+
+>>> from maps.Graph_tiny import Graph_tiny
+>>> from algo.AStar import AStar
+>>> from algo.Dijkstra import Dijkstra
+>>> from algo.Dfs import Dfs
+>>> graph = Graph_tiny()
+>>> expected_ans = {'length': 1.0, 'path': [0, 1]}
+>>> dfs = Dfs(graph)
+>>> dfs.shortest_path(0, 1) == expected_ans
+True
+>>> dijk = Dijkstra(graph)
+>>> dijk.shortest_path(0, 1) == expected_ans
+True
+>>> a_star = AStar(graph)
+>>> a_star.shortest_path(0, 1) == expected_ans
+True
+>>> expected_ans = {'length': 0.0, 'path': [0]}
+>>> dfs.shortest_path(0, 0) == expected_ans
+True
+>>> dijk = Dijkstra(graph)
+>>> dijk.shortest_path(0, 0) == expected_ans
+True
+>>> a_star = AStar(graph)
+>>> a_star.shortest_path(0, 0) == expected_ans
+True
 
 
-# Test basic
->>> from problem_1 import AStar
->>> a = AStar({0: [0, 0], 1:[2, 0]}, [[1], [0]])
->>> a.heur[0][1]
-2.0
->>> a.heur[1][0]
-2.0
+#Test tiny - start equals goal
+>>> from maps.Graph_tiny import Graph_tiny
+>>> from algo.AStar import AStar
+>>> from algo.Dijkstra import Dijkstra
+>>> from algo.Dfs import Dfs
+>>> graph = Graph_tiny()
+>>> dfs = Dfs(graph)
+>>> dijk = Dijkstra(graph)
+>>> a_star = AStar(graph)
+>>> expected_ans = {'length': 0.0, 'path': [0]}
+>>> dfs.shortest_path(0, 0) == expected_ans
+True
+>>> dijk = Dijkstra(graph)
+>>> dijk.shortest_path(0, 0) == expected_ans
+True
+>>> a_star = AStar(graph)
+>>> a_star.shortest_path(0, 0) == expected_ans
+True
 
 
-
-
-# Test basic
->>> from problem_1 import AStar
->>> a = AStar({0: [0, 0], 1:[2, 0]}, [[1], [0]])
->>> a.get_heuristic_length(0, 1)
-2.0
->>> a.get_road_length(0, 1)
-2.0
+#Test singular - one city
+>>> from maps.Graph_singular import Graph_singular
+>>> from algo.AStar import AStar
+>>> from algo.Dijkstra import Dijkstra
+>>> from algo.Dfs import Dfs
+>>> graph = Graph_singular()
+>>> dfs = Dfs(graph)
+>>> dijk = Dijkstra(graph)
+>>> a_star = AStar(graph)
+>>> expected_ans = {'length': 0.0, 'path': [0]}
+>>> dfs.shortest_path(0, 0) == expected_ans
+True
+>>> dijk = Dijkstra(graph)
+>>> dijk.shortest_path(0, 0) == expected_ans
+True
+>>> a_star = AStar(graph)
+>>> a_star.shortest_path(0, 0) == expected_ans
+True
