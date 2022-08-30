@@ -1,6 +1,6 @@
 from .AGraph import AGraph
 
-class Graph_romania(AGraph):
+class Graph_12_romania(AGraph):
     """ The graph used in the videos"""
     def __init__(self):
 

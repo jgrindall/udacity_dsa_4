@@ -1,6 +1,6 @@
 from .AGraph import AGraph
 
-class Graph_tiny(AGraph):
+class Graph_2(AGraph):
     """ 2 cities, one road"""
     def __init__(self):
 

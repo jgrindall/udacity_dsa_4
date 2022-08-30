@@ -1,6 +1,6 @@
 from .AGraph import AGraph
 
-class Graph_simple(AGraph):
+class Graph_4(AGraph):
     """ 4 cities in a square and one in the middle"""
 
     def __init__(self):
@@ -31,7 +31,8 @@ class Graph_simple(AGraph):
         roads = [
             [
                 1,
-                3
+                3,
+                4
             ],
             [
                 0,
@@ -47,7 +48,7 @@ class Graph_simple(AGraph):
             [
                 0,
                 1,
-                2
+                3
             ]
         ]
         

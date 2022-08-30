@@ -1,6 +1,7 @@
 from .Node import Node
 from .MinHeap import MinHeap
 from .AAlgorithm import AAlgorithm
+from .ShortestPath import ShortestPath
 
 class AStar(AAlgorithm):
     def __init__(self, graph):
@@ -10,6 +11,9 @@ class AStar(AAlgorithm):
         return self.heuristics[city0][city1]
 
     def shortest_path(self, start, goal):
+        if start == goal:
+            return ShortestPath(0.0, [start])
+
         """Run the A* algorithm"""
         frontier = MinHeap()
         frontier.insert(Node(start, 0, 0))
@@ -24,10 +28,7 @@ class AStar(AAlgorithm):
             visited[city] = True
             if city == goal:
                 # We found it
-                return {
-                    "length": node.f_value,
-                    "path": AAlgorithm.walk_backwards(start, goal, previous_nodes)
-                }
+                return ShortestPath(float(node.f_value), AAlgorithm.walk_backwards(start, goal, previous_nodes))
             else:
                 neighbours = self.graph.get_neighbours(city)
                 for neighbour in neighbours:
@@ -49,5 +50,6 @@ class AStar(AAlgorithm):
                             previous_nodes[neighbour] = city
                             #f value has changed - re-heapfiy the heap
                             frontier.heapify()
-        return None
+
+        return ShortestPath()
 

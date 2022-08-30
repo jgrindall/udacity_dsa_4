@@ -288,6 +288,7 @@ True
 ...   graph = graphs[i]
 ...   dijk = Dijkstra(graph)
 ...   start_time = time.time()
+...   elapsed = 0
 ...   for n in range(num_runs):
 ...      a = random.randint(0, num_cities[i])
 ...      b = random.randint(0, num_cities[i])
@@ -295,16 +296,6 @@ True
 ...   elapsed = time.time() - start_time
 ...   print("dijkstra", num_cities[i], elapsed * 1000, "msecs")
 
->>> for i in range(0, len(graphs)):
-...   graph = graphs[i]
-...   a_star = AStar(graph)
-...   start_time = time.time()
-...   for n in range(num_runs):
-...      a = random.randint(0, num_cities[i])
-...      b = random.randint(0, num_cities[i])
-...      p = a_star.shortest_path(a, b)
-...   elapsed = time.time() - start_time
-...   print("a_star", num_cities[i], elapsed * 1000, "msecs")
 
 
 
