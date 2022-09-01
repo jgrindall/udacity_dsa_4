@@ -24,7 +24,6 @@ class PriorityQueue:
     def add(self, node):
         heapq.heappush(self.list, node)
         self.lookup[node.city] = node
-        print("s", len(self.list))
         self.size += 1
         
     def pop(self):

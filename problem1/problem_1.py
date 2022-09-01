@@ -6,6 +6,6 @@ graph = Graph_40()
 a_star = AStar(graph)
 
 
-a2 = a_star.shortest_path(0, 2)
+a2 = a_star.shortest_path(5, 34)
 print(a2)
 
