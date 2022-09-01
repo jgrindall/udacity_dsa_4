@@ -1,3 +1,6 @@
+# Basic idea obtained from udacity: https://www.udacity.com/blog/2021/10/implementing-dijkstras-algorithm-in-python.html
+
+
 from .AAlgorithm import AAlgorithm
 from .ShortestPath import ShortestPath
 
