@@ -26,23 +26,19 @@ class Dfs(AAlgorithm):
             nonlocal visited
             nonlocal found_paths
             nonlocal path
-            
-            #print(a, b)
-            #print(path, visited)
-            
+
             visited[a] = True
             path.append(a)
 
             if a == b:
+                # We found one
                 found_paths.append(path.copy())
             neighbours = self.graph.get_neighbours(a)
             for neighbour in neighbours:
                 if neighbour not in visited:
-                    #print("n", neighbour)
                     dfs(neighbour, b)
                 
             path.pop()
-            #print("unvisit", a)
             del visited[a]
 
 
@@ -51,9 +47,7 @@ class Dfs(AAlgorithm):
         # if we didn't find any at all, return None
         if len(found_paths) == 0:
            return ShortestPath()
-       
-        #print("fp", found_paths) 
-       
+
         def get_path_length(path):
             """ get the length of a path. Eg [0, 4, 7]-> road(0, 4) + road(4, 7) """
             if len(path) <= 1:

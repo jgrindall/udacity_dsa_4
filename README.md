@@ -2,13 +2,21 @@
 
 Note: python3 -> 'py' for Windows
 
-- To run the tests cd into each folder and execute the tests using doctest.
 
-Eg:
+To run the main file:
+
+*  cd problem1 & python3 problem_1.py
 
 
-            > cd problem1
-            
-            > python3 -m doctest -v tests.txt
 
-            
+To run the tests:
+
+*  cd problem1 & python3 -m doctest -v tests.txt
+
+
+
+To see the timing of A* vs Dijkstra
+
+*  cd problem1 & python3 timing_1.py
+
+

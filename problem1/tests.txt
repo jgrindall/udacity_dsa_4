@@ -1,10 +1,7 @@
 #Test tiny
 
 >>> from maps.Graph_2 import Graph_2
->>> from algo.AStar import AStar
->>> from algo.Dijkstra import Dijkstra
->>> from algo.ShortestPath import ShortestPath
->>> from algo.Dfs import Dfs
+>>> from algo import Dfs, AStar, Dijkstra, ShortestPath
 >>> graph = Graph_2()
 >>> expected_ans = ShortestPath(1.0, [0, 1])
 >>> dfs = Dfs(graph)
@@ -27,10 +24,7 @@ True
 
 #Test tiny - start equals goal
 >>> from maps.Graph_2 import Graph_2
->>> from algo.AStar import AStar
->>> from algo.Dijkstra import Dijkstra
->>> from algo.Dfs import Dfs
->>> from algo.ShortestPath import ShortestPath
+>>> from algo import Dfs, AStar, Dijkstra, ShortestPath
 >>> graph = Graph_2()
 >>> dfs = Dfs(graph)
 >>> dijk = Dijkstra(graph)
@@ -47,10 +41,7 @@ True
 
 #Test singular - one city
 >>> from maps.Graph_1 import Graph_1
->>> from algo.AStar import AStar
->>> from algo.Dijkstra import Dijkstra
->>> from algo.Dfs import Dfs
->>> from algo.ShortestPath import ShortestPath
+>>> from algo import Dfs, AStar, Dijkstra, ShortestPath
 >>> graph = Graph_1()
 >>> dfs = Dfs(graph)
 >>> dijk = Dijkstra(graph)
@@ -67,10 +58,7 @@ True
 
 #Test disconnected
 >>> from maps.Graph_2_disconnected import Graph_2_disconnected
->>> from algo.AStar import AStar
->>> from algo.Dijkstra import Dijkstra
->>> from algo.Dfs import Dfs
->>> from algo.ShortestPath import ShortestPath
+>>> from algo import Dfs, AStar, Dijkstra, ShortestPath
 >>> graph = Graph_2_disconnected()
 >>> dfs = Dfs(graph)
 >>> dijk = Dijkstra(graph)
@@ -102,10 +90,7 @@ True
 
 #Test Romania map from lectures, Arad->Arad
 >>> from maps.Graph_12_romania import Graph_12_romania
->>> from algo.AStar import AStar
->>> from algo.Dijkstra import Dijkstra
->>> from algo.Dfs import Dfs
->>> from algo.ShortestPath import ShortestPath
+>>> from algo import Dfs, AStar, Dijkstra, ShortestPath
 >>> graph = Graph_12_romania()
 >>> dfs = Dfs(graph)
 >>> dijk = Dijkstra(graph)
@@ -125,10 +110,7 @@ True
 
 #Test Romania map from lectures, Arad->Bucharest
 >>> from maps.Graph_12_romania import Graph_12_romania
->>> from algo.AStar import AStar
->>> from algo.Dijkstra import Dijkstra
->>> from algo.Dfs import Dfs
->>> from algo.ShortestPath import ShortestPath
+>>> from algo import Dfs, AStar, Dijkstra, ShortestPath
 >>> graph = Graph_12_romania()
 >>> dfs = Dfs(graph)
 >>> dijk = Dijkstra(graph)
@@ -149,10 +131,7 @@ True
 
 #Test Simple map
 >>> from maps.Graph_4 import Graph_4
->>> from algo.AStar import AStar
->>> from algo.Dijkstra import Dijkstra
->>> from algo.Dfs import Dfs
->>> from algo.ShortestPath import ShortestPath
+>>> from algo import Dfs, AStar, Dijkstra, ShortestPath
 >>> graph = Graph_4()
 >>> dfs = Dfs(graph)
 >>> dijk = Dijkstra(graph)
@@ -199,16 +178,13 @@ True
 
 #Test Map 6
 >>> from maps.Graph_6 import Graph_6
->>> from algo.AStar import AStar
->>> from algo.Dijkstra import Dijkstra
->>> from algo.Dfs import Dfs
->>> from algo.ShortestPath import ShortestPath
+>>> from algo import Dfs, AStar, Dijkstra, ShortestPath
 >>> graph = Graph_6()
 >>> dfs = Dfs(graph)
 >>> dijk = Dijkstra(graph)
 >>> a_star = AStar(graph)
 >>> failed_tests = []
->>> for i in range(0, 6):
+>>> for i in range(0, len(graph.cities)):
 ...   for j in range(0, 6):
 ...      a1 = dfs.shortest_path(i, j)
 ...      a2 = dijk.shortest_path(i, j)
@@ -222,17 +198,14 @@ True
 
 #Test Map 10
 >>> from maps.Graph_10 import Graph_10
->>> from algo.AStar import AStar
->>> from algo.Dijkstra import Dijkstra
->>> from algo.Dfs import Dfs
->>> from algo.ShortestPath import ShortestPath
+>>> from algo import Dfs, AStar, Dijkstra, ShortestPath
 >>> graph = Graph_10()
 >>> dfs = Dfs(graph)
 >>> dijk = Dijkstra(graph)
 >>> a_star = AStar(graph)
 >>> failed_tests = []
->>> for i in range(0, 10):
-...   for j in range(0, 10):
+>>> for i in range(0, len(graph.cities)):
+...   for j in range(0, len(graph.cities)):
 ...      a1 = dfs.shortest_path(i, j)
 ...      a2 = dijk.shortest_path(i, j)
 ...      a3 = a_star.shortest_path(i, j)
@@ -246,15 +219,13 @@ True
 
 #Test Map 40
 >>> from maps.Graph_40 import Graph_40
->>> from algo.AStar import AStar
->>> from algo.Dijkstra import Dijkstra
->>> from algo.ShortestPath import ShortestPath
+>>> from algo import Dfs, AStar, Dijkstra, ShortestPath
 >>> graph = Graph_40()
 >>> dijk = Dijkstra(graph)
 >>> a_star = AStar(graph)
 >>> failed_tests = []
->>> for i in range(0, 40):
-...   for j in range(0, 40):
+>>> for i in range(0, len(graph.cities)):
+...   for j in range(0, len(graph.cities)):
 ...      a1 = dijk.shortest_path(i, j)
 ...      a2 = a_star.shortest_path(i, j)
 ...      if a1.length != a2.length:
@@ -264,49 +235,24 @@ True
 
 
 
-
-
-#Test - times
->>> import time
+#Test Map 1000 (note this one is random, so will be testing different graphs each time)
+>>> from maps.Graph_1000 import Graph_1000
+>>> from algo import Dfs, AStar, Dijkstra, ShortestPath
 >>> import random
->>> from maps.Graph_40 import Graph_40
->>> from maps.Graph_10 import Graph_10
->>> from maps.Graph_6 import Graph_6
->>> from maps.Graph_4 import Graph_4
->>> from maps.Graph_2 import Graph_2
->>> from maps.Graph_1 import Graph_1
-
->>> from algo.AStar import AStar
->>> from algo.Dijkstra import Dijkstra
->>> from algo.ShortestPath import ShortestPath
-
->>> num_runs = 10000
-
->>> graphs = [Graph_1(), Graph_2(), Graph_4(), Graph_6(), Graph_10(), Graph_12_romania(), Graph_40()]
->>> num_cities = [1, 2, 4, 6, 10, 12, 40]
->>> for i in range(0, len(graphs)):
-...   graph = graphs[i]
-...   dijk = Dijkstra(graph)
-...   start_time = time.time()
-...   for n in range(num_runs):
-...      a = random.randint(0, num_cities[i])
-...      b = random.randint(0, num_cities[i])
-...      p = dijk.shortest_path(a, b)
-...   elapsed = time.time() - start_time
-...   print("dijkstra", num_cities[i], elapsed * 1000, "msecs")
-
->>> for i in range(0, len(graphs)):
-...   graph = graphs[i]
-...   a_star = AStar(graph)
-...   start_time = time.time()
-...   for n in range(num_runs):
-...      a = random.randint(0, num_cities[i])
-...      b = random.randint(0, num_cities[i])
-...      p = a_star.shortest_path(a, b)
-...   elapsed = time.time() - start_time
-...   print("a_star", num_cities[i], elapsed * 1000, "msecs")
-
-
+>>> graph = Graph_1000()
+>>> dijk = Dijkstra(graph)
+>>> a_star = AStar(graph)
+>>> failed_tests = []
+>>> num_runs = 50
+>>> for n in range(num_runs):
+...   i = random.randint(0, len(graph.cities))
+...   j = random.randint(0, len(graph.cities))
+...   a1 = dijk.shortest_path(i, j)
+...   a2 = a_star.shortest_path(i, j)
+...   if a1.length != a2.length:
+...      failed_tests.append([i, j, a1, a2])
+>>> print(failed_tests)
+[]
 
 
 

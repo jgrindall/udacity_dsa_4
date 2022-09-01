@@ -4,6 +4,8 @@ class Node:
 
         self.g_value = g_value
         self.h_value = h_value
+        
+        self.removed = False
 
     def __eq__(self, other):
         # to check if a node exists in the heap we can check if the cities match
@@ -12,15 +14,14 @@ class Node:
     def __gt__(self, other):
         return self.f_value > other.f_value
     
+    def __lt__(self, other):
+        return self.f_value < other.f_value
+    
     @property 
     def f_value(self):
         #f = g + h , a computed property
         return self.g_value + self.h_value
-    
-    @property
-    def key(self):
-        return self.city
-    
+
     def __repr__(self):
         """ pretty-print """
         s = "Node:"

@@ -26,6 +26,9 @@ class AGraph:
         return self.road_lengths[city0][city1]
     
     def get_heuristic_length(self, city0, city1):
+        if city0 not in self.heuristics:
+            print(self.heuristics)
+            raise ValueError("h")
         return self.heuristics[city0][city1]
 
     def __build_road_lengths(self):

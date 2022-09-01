@@ -1,5 +1,6 @@
 from .AGraph import AGraph
 from .Graph_10 import Graph_10
+from .Graph_1000 import Graph_1000
 from .Graph_40 import Graph_40
 from .Graph_12_romania import Graph_12_romania
 from .Graph_2 import Graph_2

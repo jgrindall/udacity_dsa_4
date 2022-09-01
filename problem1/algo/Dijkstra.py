@@ -13,15 +13,11 @@ class Dijkstra(AAlgorithm):
 
         cities = list(self.graph.cities.keys())
         unvisited = cities
-        # We'll use this dict to save the cost of visiting each node and update it as we move along the graph   
         shortest_path = {}
-        # We'll use this dict to save the shortest known path to a node found so far
         previous_nodes = {}
-        # We'll use max_value to initialize the "infinity" value of the unvisited nodes   
         for node in unvisited:
             shortest_path[node] = float('inf')
         
-        # However, we initialize the starting node's value with 0   
         shortest_path[start] = 0
 
         def get_next_city():
@@ -35,7 +31,6 @@ class Dijkstra(AAlgorithm):
                     min_value = d
             return min_city
 
-        # The algorithm executes until we visit all nodes
         while len(unvisited) >= 1:
             city = get_next_city()
             unvisited.remove(city)
@@ -47,8 +42,10 @@ class Dijkstra(AAlgorithm):
                         shortest_path[neighbour] = val
                         # We also update the best path to the current node
                         previous_nodes[neighbour] = city
-        
+
+        #success
         if goal in previous_nodes:
             return ShortestPath(float(shortest_path[goal]), AAlgorithm.walk_backwards(start, goal, previous_nodes))
-
+        
+        #failure
         return ShortestPath()
