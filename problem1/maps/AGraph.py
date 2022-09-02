@@ -26,9 +26,6 @@ class AGraph:
         return self.road_lengths[city0][city1]
     
     def get_heuristic_length(self, city0, city1):
-        if city0 not in self.heuristics:
-            print(self.heuristics)
-            raise ValueError("h")
         return self.heuristics[city0][city1]
 
     def __build_road_lengths(self):
@@ -51,7 +48,15 @@ class AGraph:
                 self.heuristics[city0][city1] = AGraph.get_euclidean_dist(self.cities[city0], self.cities[city1])
         for city in self.cities:
             build(city)
-
+    
+    def get_path_length(self, cities):
+        if len(cities) == 0:
+            return 0
+        length = 0
+        for i in range(len(cities))[1:]:
+            length += self.get_road_length(cities[i - 1], cities[i])
+        return length
+    
     @staticmethod
     def get_euclidean_dist(p0, p1):
         """Helper function """
