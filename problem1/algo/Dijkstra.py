@@ -48,7 +48,11 @@ class Dijkstra(AAlgorithm):
 
         #success
         if goal in previous_nodes:
-            return ShortestPath(float(shortest_path[goal]), AAlgorithm.walk_backwards(start, goal, previous_nodes))
+            path = AAlgorithm.walk_backwards(start, goal, previous_nodes)
+            path_length = self.graph.get_path_length(path)
+            if path_length != float(shortest_path[goal]):
+                raise ValueError("dijk ?")
+            return ShortestPath(float(shortest_path[goal]), path)
         
         #failure
         return ShortestPath()

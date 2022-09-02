@@ -35,9 +35,10 @@ class PriorityQueue:
                 return node
     
     def update(self, node, g_value):
-        new_node = Node(node.city, g_value, node.h_value)
         old_node = self.lookup[node.city]
         old_node.removed = True
+        
+        new_node = Node(node.city, g_value, node.h_value)
         heapq.heappush(self.list, new_node)
         self.lookup[node.city] = new_node
 
@@ -78,7 +79,13 @@ class AStar(AAlgorithm):
             visited[city] = True
             if city == goal:
                 # We found it
-                return ShortestPath(float(node.f_value), AAlgorithm.walk_backwards(start, goal, previous_nodes))
+                path = AAlgorithm.walk_backwards(start, goal, previous_nodes)
+                path_length = self.graph.get_path_length(path)
+                if path_length != float(node.f_value):
+                    print(start, goal, previous_nodes, path)
+                    print(path_length, node.f_value)
+                    raise ValueError("a star?")
+                return ShortestPath(float(node.f_value), path)
             else:
                 neighbours = self.graph.get_neighbours(city)
                 for neighbour in neighbours:
