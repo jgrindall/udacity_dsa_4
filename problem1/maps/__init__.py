@@ -7,4 +7,5 @@ from .Graph_2 import Graph_2
 from .Graph_1 import Graph_1
 from .Graph_2_disconnected import Graph_2_disconnected
 from .Graph_4 import Graph_4
+from .Graph_5 import Graph_5
 from .Graph_6 import Graph_6
