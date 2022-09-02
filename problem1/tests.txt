@@ -185,7 +185,7 @@ True
 >>> a_star = AStar(graph)
 >>> failed_tests = []
 >>> for i in range(0, len(graph.cities)):
-...   for j in range(0, 6):
+...   for j in range(0, len(graph.cities)):
 ...      a1 = dfs.shortest_path(i, j)
 ...      a2 = dijk.shortest_path(i, j)
 ...      a3 = a_star.shortest_path(i, j)
