@@ -25,7 +25,7 @@ class PriorityQueue:
         heapq.heappush(self.list, node)
         self.lookup[node.city] = node
         self.size += 1
-        
+
     def pop(self):
         #keep popping the removed ones, they are red-herrings
         while len(self.list) >= 1:
@@ -88,6 +88,7 @@ class AStar(AAlgorithm):
                 return ShortestPath(float(node.f_value), path)
             else:
                 neighbours = self.graph.get_neighbours(city)
+                
                 for neighbour in neighbours:
                     if neighbour in visited:
                         continue
@@ -97,18 +98,20 @@ class AStar(AAlgorithm):
                     h_value = self.graph.get_heuristic_length(neighbour, goal)
                     # see if we have already been to this node
                     existing_node = frontier.get_lookup(neighbour)
+                    
+                    if existing_node is None or g_value < existing_node.g_value:
 
-                    if existing_node is None:
-                        #insert it
-                        new_node = Node(neighbour, g_value, h_value)
-                        frontier.add(new_node)
+                        if existing_node is None:
+                            #insert it
+                            new_node = Node(neighbour, g_value, h_value)
+                            frontier.add(new_node)
+    
+                        elif g_value < existing_node.g_value:
+                            #better
+                            frontier.update(existing_node, g_value)
 
-                    elif g_value < existing_node.g_value:
-                        #better
-                        frontier.update(existing_node, g_value)
-
-                    #also create the path back
-                    previous_nodes[neighbour] = city
+                        #also create the path back
+                        previous_nodes[neighbour] = city
 
         # failure condition
         return ShortestPath()
